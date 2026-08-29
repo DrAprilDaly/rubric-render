@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rubric Render</title>
+
+        <style>
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                width: 90%;
+                margin: 0 auto;
+            }
+
+            .copyright { color: dimgrey; }
+
+            h1 { width: 80%; margin: auto 8px; text-align: center; color:crimson; }
+
+            article {width: 100%; }
+
+            .rubric-form { background-color: white; }
+
+        </style>
+
+
+    </head>
+    <body>
+        <div class="container">
+         
+                <header>
+                    <h1>Rubric Render</h1>
+                </header>
+                <main>
+                   <form class="rubric-form" id="rubric-form">
+                
+                        <div class="form-field">
+                            <label for="file-upload">Choose a rubric XML file</label>
+                            <input
+                                id="file-upload"
+                                name="file-upload"
+                                type="file"
+                                accept=".xml,text/xml,application/xml"
+                                aria-describedby="file-help"
+                                required
+                            >
+                            <p id="file-help">
+                                Select a rubric file in XML format.
+                            </p>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="output-type">Output type</label>
+                            <select id="output-type" name="output-type">
+                                <option value="html" selected>HTML</option>
+                                <option value="markdown">Markdown</option>
+                            </select>
+                        </div>
+
+                        <button type="submit">Generate output</button>
+
+                        <div id="status" role="status" aria-live="polite"></div>
+                    </form>                  
+                </main>
+                <footer>
+                    <p class="copyright">Copyright &copy; April Daly</p>
+                </footer>
+          
+        </div>
+
+       <script>
+
+            function submitForm(evt) {
+                evt.preventDefault();
+
+                const fileInput = document.getElementById("file-upload");
+                const selectOutput = document.getElementById("output-type");
+
+                const file = fileInput.files[0];
+                const outputType = selectOutput.value;
+
+                console.log(file);
+                console.log(outputType);
+            }
+
+            window.addEventListener("DOMContentLoaded", function () {
+                const form = document.getElementById("rubric-form");
+
+                form.addEventListener("submit", submitForm);
+            });
+
+        </script>
+    </body>
+</html>
