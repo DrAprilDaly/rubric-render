@@ -1,0 +1,41 @@
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor / IDE files
+.vscode/
+.idea/
+
+# Temporary / backup files
+*.tmp
+*.temp
+*.bak
+*~
+*.swp
+
+# Logs
+*.log
+
+# Local environment / secrets
+.env
+.env.*
+!.env.example
+
+# Python, if used for test/support scripts later
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node.js, if added later
+node_modules/
+
+# Test / coverage output
+coverage/
+htmlcov/
+
+# Local scratch/output
+tmp/
+temp/
+scratch/
