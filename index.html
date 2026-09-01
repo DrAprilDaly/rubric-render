@@ -1,5 +1,30 @@
 <!DOCTYPE html>
 <html>
+    <!--
+        MIT License
+
+        Copyright (c) 2026 April Daly
+
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+
+    -->
+  
     <head>
         <title>Rubric Render</title>
 
@@ -16,27 +41,165 @@
                 margin: 0 auto;
             }
 
-            .copyright { color: dimgrey; }
+            .icon {                             
+                /* width: 1rem;
+                height: 1rem; */
 
-            h1 { width: 80%; margin: auto 8px; text-align: center; color:crimson; }
+                width: var(--icon-size, 1rem);
+                height: var(--icon-size, 1rem);
+                display: block;                
+            }
 
-            article {width: 100%; }
+            .icon-button {
+                border: none; box-shadow: none;
+            }
+            
 
-            .rubric-form { background-color: white; }
+            header 
+            { 
+                width: 100%; 
+                padding: 0.5rem 0.25rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                color:white;
+                background-color: #2929f3;
+            }
+
+            h1 { margin: 0;  }
+
+            .app-toolbar 
+            {                
+                color:currentColor;
+                background-color: inherit;                 
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;  
+                margin-right: 8px;                             
+            }
+
+            .app-toolbar-button {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background-color: none;
+                color: inherit;
+            }
+
+            .app-toolbar-icon {
+                background-color: #2929f3; 
+                fill:white;
+                --icon-size: 24px;
+            }
+
+           
+
+            main {width: 100%; }
+
+            .rubric-form { 
+                margin: 2rem 0;
+                width: 100%;
+                border: 1px solid #d6d6d6;
+                border-radius: 0.5rem;
+                background-color: #f7f7f7;
+                padding: 1rem;
+            }
+
+          
+            .form-field {
+                margin: 1rem;
+            }
+
+            .form-field-help {
+                font-style: italic;
+                padding-left: 0.5rem;
+               
+            }
+
+            .rubric-form label {
+                color: blue;
+                margin-right: 0.5rem;
+            }
+
+            .form-submit-button {
+                padding: 0.5rem;
+                color: blue;
+                margin-left: 1rem;
+                font-weight: bold;
+            }
+
+            footer { border-top: 1px dimgrey solid; margin: 8px 0; width: 100%;}
+
+            .copyright { color: dimgrey; text-align:center;}
 
         </style>
 
-
     </head>
     <body>
+        <!-- Bootstrap Icons used under the MIT License.  -->
+        <svg id="app-icons"
+            xmlns="http://www.w3.org/2000/svg"
+            style="display: none;"
+            aria-hidden="true">
+
+            <symbol id="icon-clipboard" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"/>
+            </symbol>  
+            <symbol id="icon-clipboard-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2"/>
+            </symbol>
+            <symbol id="icon-download" viewBox="0 0 16 16">
+                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>                
+            </symbol>          
+            <symbol id="icon-copy" viewBox="0 0 16 16">
+                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+            </symbol>    
+            <symbol id="icon-help" viewBox="0 0 16 16">          
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94"/>
+            </symbol>          
+            <symbol id="icon-help-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+            </symbol>
+            <symbol id="icon-info" viewBox="0 0 16 16">          
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+            </symbol>          
+            <symbol id="icon-info-fill" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+            </symbol>            
+        </svg>
+
+      
         <div class="container">
          
-                <header>
-                    <h1>Rubric Render</h1>
-                </header>
-                <main>
-                   <form class="rubric-form" id="rubric-form">
-                
+            <header>
+                <div class="app-title"><h1>Rubric Render</h1></div>
+                <div class="app-toolbar">
+                    <button id="show-help" class="icon-button" title="Show help.">
+                        <span class="icon-wrapper">
+                            <svg class="icon app-toolbar-icon" aria-hidden="true">
+                                <use href="#icon-help"></use>
+                            </svg>
+                        </span>
+                    </button>
+                    <button id="show-about" class="icon-button" title="About this applicaiton">
+                         <span class="icon-wrapper">
+                            <svg class="icon app-toolbar-icon" aria-hidden="true">
+                                <use href="#icon-info"></use>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </header>
+
+            <main>
+                <section id="app-input">
+                    <form class="rubric-form" id="rubric-form">
+
                         <div class="form-field">
                             <label for="file-upload">Choose a rubric XML file</label>
                             <input
@@ -45,31 +208,71 @@
                                 type="file"
                                 accept=".xml,text/xml,application/xml"
                                 aria-describedby="file-help"
+                                title="Select rubric XML file."
                                 required
                             >
-                            <p id="file-help">
+                            <p id="file-help" class="form-field-help">
                                 Select a rubric file in XML format.
                             </p>
                         </div>
 
                         <div class="form-field">
                             <label for="output-type">Output type</label>
-                            <select id="output-type" name="output-type">
+                            <select id="output-type" name="output-type" title="Select output format.">
                                 <option value="html" selected>HTML</option>
                                 <option value="markdown">Markdown</option>
                             </select>
                         </div>
 
-                        <button type="submit">Generate output</button>
+                        <div class="form-field">
+                            <label for="output-level">Start at header level</label>
+                            <select id="output-level" name="output-level" title="Select output startng heading level.">
+                                <option value="level1">Level 1</option>
+                                <option value="level2" selected>Level 2</option>
+                                <option value="level3" >Level 3</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="output-show-model">Show rubric model</label>
+                            <input id="output-show-model" name="output-show-model" type="checkbox" title="Select whether to show the parsed parsed rubric model (in a seperate section/window)." />                                
+                        </div>                        
+
+                        <button type="submit" class="form-submit-button">Generate output</button>
 
                         <div id="status" role="status" aria-live="polite"></div>
-                    </form>                  
-                </main>
-                <footer>
-                    <p class="copyright">Copyright &copy; April Daly</p>
-                </footer>
+                    </form> 
+                </section>
+
+                <section id="app-output" class="app-output">
+                    <div id="app-output-controls">
+                        
+                        <button type="button" id="copy-output" class="icon-button">
+                            <span class="icon-wrapper">
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="#icon-clipboard"></use>
+                                </svg>
+                            </span>
+                        </button>
+                        <button type="button" id="download-output" class="icon-butto">
+                            <span class="icon-wrapper">
+                                <svg class="icon" aria-hidden="true">
+                                    <use href="#icon-download"></use>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div id="app-output-content">
+                    </div>
+                </section>           
+            </main>
+
+            <footer>
+                <p class="copyright">Copyright &copy; April Daly</p>
+            </footer>
           
-        </div>
+        </div> <!-- container -->
 
        <script>
             // ToDo
@@ -99,6 +302,10 @@
                 form.addEventListener("submit", submitForm);
             });
 
+        </script>
+
+        <script>
+            let mockHtml = "";
         </script>
     </body>
 </html>
